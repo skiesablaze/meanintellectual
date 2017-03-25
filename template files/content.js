@@ -7,50 +7,40 @@ function thesaurus (word){
   console.log("Visiting page " + pageToVisit);
   request(pageToVisit, function(error, response, body) {
      if(error) {
-       console.log("Error: " + error);
-     }
-     // Check status code (200 is HTTP OK)
-     console.log("Status code: " + response.statusCode);
-     if(response.statusCode === 200) {
-       // Parse the document body
-       var body = cheerio.load(body);
-       var temp = body('div').text();
-       var tempArray = temp.split(" ");
-       var compare = "next";
-
-       tempArray = tempArray.filter(function(str)
-       { return /\S/.test(str);
-       });
-
-       for (var i = 0; i < tempArray.length; i++){
-         //console.log("word: " + tempArray[i]);
-         if (tempArray[i].match("next")){
-           var synonym = tempArray[i+1];
-           break;
-         }
-       }
-       //console.log("word: " + synonym);
-     }
-  });
-
-  return synonym;
-}
-
-var elements = document.getElementsByTagName('*');
+       console.log("var elements = document.getElementsByTagName('*');
+//returns all elements in document
 
 for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
+//isolating each individual element (which has nodes)
 
     for (var j = 0; j < element.childNodes.length; j++) {
         var node = element.childNodes[j];
+//iterating through the nodes, till we get 3, which contains the text
 
         if (node.nodeType === 3) {
             var text = node.nodeValue;
-            var replacedText = text.replace(/[word or phrase to replace here]/gi, thesaurus(      ));
+            var orgWords = "website";
+            //text.replace( /\n/g, " " ).split( " " );
+            //splitting entire text into words, storing in array
 
-            if (replacedText !== text) {
-                element.replaceChild(document.createTextNode(replacedText), node);
+            for(var i = 0; i < 1; i++){
+              //if (orgWords[i] > 3 && orgWords[i] < 5){
+                  //here we need to get thesaurus stuff??
+
+                  //RegExp.quote = function(str) {
+                    //return str.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
+                  //};
+                var re = new RegExp(orgWords, "g");
+                var replacedText = text.replace(re, 'SHIT'); //edit this line
             }
+
+        }
+
+
+
+        if (replacedText !== text) {
+            element.replaceChild(document.createTextNode(replacedText), node);
         }
     }
 }
