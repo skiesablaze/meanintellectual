@@ -11,10 +11,10 @@ for (var i = 0; i < elements.length; i++) {
 
         if (node.nodeType === 3) {
             var text = node.nodeValue;
-            if (text.length <3)
+            if (text.length <3){
 //here we need to get thesaurus stuff??
             var replacedText = text.replace(/Genius/gi, 'Numbskull'); //edit this line
-
+            }
             if (replacedText !== text) {
                 element.replaceChild(document.createTextNode(replacedText), node);
             }
