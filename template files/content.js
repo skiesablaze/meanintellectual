@@ -1,13 +1,4 @@
-function thesaurus (word){
-  var request = require('request');
-  var cheerio = require('cheerio');
-  var URL = require('url-parse');
-
-  var pageToVisit = "http://www.thesaurus.com/browse/" + word + "?s=t";
-  console.log("Visiting page " + pageToVisit);
-  request(pageToVisit, function(error, response, body) {
-     if(error) {
-       console.log("var elements = document.getElementsByTagName('*');
+var elements = document.getElementsByTagName('*');
 //returns all elements in document
 
 for (var i = 0; i < elements.length; i++) {
@@ -20,7 +11,7 @@ for (var i = 0; i < elements.length; i++) {
 
         if (node.nodeType === 3) {
             var text = node.nodeValue;
-            var orgWords = "website";
+
             //text.replace( /\n/g, " " ).split( " " );
             //splitting entire text into words, storing in array
 
@@ -31,7 +22,8 @@ for (var i = 0; i < elements.length; i++) {
                   //RegExp.quote = function(str) {
                     //return str.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
                   //};
-                var re = new RegExp(orgWords, "g");
+                var orgWords = "website";
+                var re = new RegExp(orgWords, "gi");
                 var replacedText = text.replace(re, 'SHIT'); //edit this line
             }
 
