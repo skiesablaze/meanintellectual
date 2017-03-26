@@ -7,7 +7,7 @@ for (var i = 0; i < elements.length; i++) {
 
     for (var j = 0; j < element.childNodes.length; j++) {
         var node = element.childNodes[j];
-//iterating through the nodes, till we get 3, which contains the text
+//iterating through all of the nodes, till we get 3, which contains the text
 
         if (node.nodeType === 3) {
             var text = node.nodeValue;
